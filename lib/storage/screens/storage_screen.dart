@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_storage/authentication/components/show_snackbar.dart';
+import 'package:flutter_firebase_storage/storage/services/storage_service.dart';
 import 'package:image_picker/image_picker.dart';
 
 class StorageScreen extends StatefulWidget {
@@ -12,6 +15,8 @@ class StorageScreen extends StatefulWidget {
 class _StorageScreenState extends State<StorageScreen> {
   String? urlPhoto;
   List<String> listFiles = [];
+
+  final StorageService _storageService = StorageService();
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +48,15 @@ class _StorageScreenState extends State<StorageScreen> {
         child: Column(
           children: [
             (urlPhoto != null)
-                ? Image.network(urlPhoto!)
+                ? ClipRRect(
+                  borderRadius: BorderRadius.circular(64),
+                  child: Image.network(
+                      urlPhoto!,
+                      height: 128,
+                      width: 128,
+                      fit: BoxFit.cover,
+                    ),
+                )
                 : const CircleAvatar(
                     radius: 64,
                     child: Icon(Icons.person),
@@ -85,11 +98,16 @@ class _StorageScreenState extends State<StorageScreen> {
     )
         .then((XFile? image) {
       if (image != null) {
-        showSnackBar(
-          context: context,
-          mensagem: image.path,
-          isErro: false,
-        );
+        _storageService
+            .upload(
+          file: File(image.path),
+          fileName: "user_photo",
+        )
+            .then((String urlDownload) {
+          setState(() {
+            urlPhoto = urlDownload;
+          });
+        });
       } else {
         showSnackBar(
           context: context,
@@ -99,5 +117,13 @@ class _StorageScreenState extends State<StorageScreen> {
     });
   }
 
-  reload() {}
+  reload() {
+    _storageService
+        .getDownloadUrlByFileName(fileName: "user_photo")
+        .then((urlDownload) {
+      setState(() {
+        urlPhoto = urlDownload;
+      });
+    });
+  }
 }
