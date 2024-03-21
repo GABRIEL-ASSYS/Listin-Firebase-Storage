@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_storage/authentication/components/show_snackbar.dart';
+import 'package:flutter_firebase_storage/storage/models/image_custom_info.dart';
 import 'package:flutter_firebase_storage/storage/services/storage_service.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -14,7 +15,7 @@ class StorageScreen extends StatefulWidget {
 
 class _StorageScreenState extends State<StorageScreen> {
   String? urlPhoto;
-  List<String> listFiles = [];
+  List<ImageCustomInfo> listFiles = [];
 
   final StorageService _storageService = StorageService();
 
@@ -84,19 +85,19 @@ class _StorageScreenState extends State<StorageScreen> {
             ),
             Column(
               children: List.generate(listFiles.length, (index) {
-                String url = listFiles[index];
+                ImageCustomInfo imageInfo = listFiles[index];
                 return ListTile(
                   leading: ClipRRect(
                     borderRadius: BorderRadius.circular(24),
                     child: Image.network(
-                      url,
+                      imageInfo.urlDownload,
                       height: 48,
                       width: 48,
                       fit: BoxFit.cover,
                     ),
                   ),
-                  title: Text("Nome da imagem"),
-                  subtitle: Text("Tamanho da imagem"),
+                  title: Text(imageInfo.name),
+                  subtitle: Text(imageInfo.size),
                   trailing: IconButton(
                       onPressed: () {},
                       icon: Icon(
@@ -153,9 +154,9 @@ class _StorageScreenState extends State<StorageScreen> {
     //   });
     // });
 
-    _storageService.listAllFiles().then((List<String> listUrlsDownload) {
+    _storageService.listAllFiles().then((List<ImageCustomInfo> listFilesInfo) {
       setState(() {
-        listFiles = listUrlsDownload;
+        listFiles = listFilesInfo;
       });
     });
   }
