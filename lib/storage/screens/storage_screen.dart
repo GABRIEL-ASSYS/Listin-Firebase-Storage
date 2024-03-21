@@ -19,6 +19,11 @@ class _StorageScreenState extends State<StorageScreen> {
   final StorageService _storageService = StorageService();
 
   @override
+  void initState() {
+    reload();
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -49,14 +54,14 @@ class _StorageScreenState extends State<StorageScreen> {
           children: [
             (urlPhoto != null)
                 ? ClipRRect(
-                  borderRadius: BorderRadius.circular(64),
-                  child: Image.network(
+                    borderRadius: BorderRadius.circular(64),
+                    child: Image.network(
                       urlPhoto!,
                       height: 128,
                       width: 128,
                       fit: BoxFit.cover,
                     ),
-                )
+                  )
                 : const CircleAvatar(
                     radius: 64,
                     child: Icon(Icons.person),
@@ -74,10 +79,31 @@ class _StorageScreenState extends State<StorageScreen> {
                 fontSize: 18,
               ),
             ),
+            const SizedBox(
+              height: 16,
+            ),
             Column(
               children: List.generate(listFiles.length, (index) {
                 String url = listFiles[index];
-                return Image.network(url);
+                return ListTile(
+                  leading: ClipRRect(
+                    borderRadius: BorderRadius.circular(24),
+                    child: Image.network(
+                      url,
+                      height: 48,
+                      width: 48,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  title: Text("Nome da imagem"),
+                  subtitle: Text("Tamanho da imagem"),
+                  trailing: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      )),
+                );
               }),
             )
           ],
@@ -101,11 +127,12 @@ class _StorageScreenState extends State<StorageScreen> {
         _storageService
             .upload(
           file: File(image.path),
-          fileName: "user_photo",
+          fileName: DateTime.now().toString(),
         )
             .then((String urlDownload) {
           setState(() {
             urlPhoto = urlDownload;
+            reload();
           });
         });
       } else {
@@ -118,11 +145,17 @@ class _StorageScreenState extends State<StorageScreen> {
   }
 
   reload() {
-    _storageService
-        .getDownloadUrlByFileName(fileName: "user_photo")
-        .then((urlDownload) {
+    // _storageService
+    //     .getDownloadUrlByFileName(fileName: "user_photo")
+    //     .then((urlDownload) {
+    //   setState(() {
+    //     urlPhoto = urlDownload;
+    //   });
+    // });
+
+    _storageService.listAllFiles().then((List<String> listUrlsDownload) {
       setState(() {
-        urlPhoto = urlDownload;
+        listFiles = listUrlsDownload;
       });
     });
   }

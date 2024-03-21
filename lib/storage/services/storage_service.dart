@@ -25,9 +25,9 @@ class StorageService {
     List<Reference> listReference = result.items;
 
     List<String> listFiles = [];
-    
+
     for (Reference reference in listReference) {
-      String urlDownload = await reference.getDownloadURL()
+      String urlDownload = await reference.getDownloadURL();
       listFiles.add(urlDownload);
     }
 
