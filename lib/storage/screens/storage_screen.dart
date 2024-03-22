@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_firebase_storage/authentication/components/show_snackbar.dart';
 import 'package:flutter_firebase_storage/storage/models/image_custom_info.dart';
 import 'package:flutter_firebase_storage/storage/services/storage_service.dart';
@@ -85,35 +87,39 @@ class _StorageScreenState extends State<StorageScreen> {
             const SizedBox(
               height: 16,
             ),
-            Column(
-              children: List.generate(listFiles.length, (index) {
-                ImageCustomInfo imageInfo = listFiles[index];
-                return ListTile(
-                  onTap: () {
-                    selectImage(imageInfo);
-                  },
-                  leading: ClipRRect(
-                    borderRadius: BorderRadius.circular(24),
-                    child: Image.network(
-                      imageInfo.urlDownload,
-                      height: 48,
-                      width: 48,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  title: Text(imageInfo.name),
-                  subtitle: Text(imageInfo.size),
-                  trailing: IconButton(
-                    onPressed: () {
-                      deleteImage(imageInfo);
-                    },
-                    icon: const Icon(
-                      Icons.delete,
-                      color: Colors.red,
-                    ),
-                  ),
-                );
-              }),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: List.generate(listFiles.length, (index) {
+                    ImageCustomInfo imageInfo = listFiles[index];
+                    return ListTile(
+                      onTap: () {
+                        selectImage(imageInfo);
+                      },
+                      leading: ClipRRect(
+                        borderRadius: BorderRadius.circular(24),
+                        child: Image.network(
+                          imageInfo.urlDownload,
+                          height: 48,
+                          width: 48,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      title: Text(imageInfo.name),
+                      subtitle: Text(imageInfo.size),
+                      trailing: IconButton(
+                        onPressed: () {
+                          deleteImage(imageInfo);
+                        },
+                        icon: const Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        ),
+                      ),
+                    );
+                  }),
+                ),
+              ),
             )
           ],
         ),
