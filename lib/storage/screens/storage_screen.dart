@@ -102,7 +102,9 @@ class _StorageScreenState extends State<StorageScreen> {
                   title: Text(imageInfo.name),
                   subtitle: Text(imageInfo.size),
                   trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      deleteImage(imageInfo);
+                    },
                     icon: const Icon(
                       Icons.delete,
                       color: Colors.red,
@@ -168,6 +170,15 @@ class _StorageScreenState extends State<StorageScreen> {
   selectImage(ImageCustomInfo imageInfo) {
     setState(() {
       urlPhoto = imageInfo.urlDownload;
+    });
+  }
+
+  deleteImage(ImageCustomInfo imageInfo) {
+    _storageService.deleteByReference(ref: imageInfo.ref).then((value) {
+      if (urlPhoto == imageInfo.urlDownload) {
+        urlPhoto = null;
+      }
+      reload();
     });
   }
 }

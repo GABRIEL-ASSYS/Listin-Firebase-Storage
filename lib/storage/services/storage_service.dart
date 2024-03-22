@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
@@ -46,5 +45,9 @@ class StorageService {
     }
 
     return listFiles;
+  }
+
+  Future<void> deleteByReference({required Reference ref}) async {
+    return await ref.delete();
   }
 }
