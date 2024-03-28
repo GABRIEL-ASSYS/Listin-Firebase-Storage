@@ -1,4 +1,4 @@
-# Flutter Firebase Storage
+# Listin Firebase Storage
  
 Este é um prjeto criado durante um curso na plataforma Alura com foco em utilizar o Firebase Storage para imagens.
 
