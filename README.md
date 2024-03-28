@@ -1,54 +1,44 @@
-# Listin (04 - Storage)
+# Flutter Firebase Storage
+ 
+Este é um prjeto criado durante um curso na plataforma Alura com foco em utilizar o Firebase Storage para imagens.
 
-![thumb-flutter-firestore](https://github.com/alura-cursos/flutter_firebase_storage/raw/main/thumbnail.png)
+## 🚀 Começando
 
-Aplicação para gerenciar Lista de Compras colaborativas.
+Essas intruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
 
-## 🔨 Funcionalidades do projeto
+### 📋 Pré-requisitos
 
-#### Motivação
+De que coisas você precisa para instalar o software e como instalá-lo?
 
-- Manipular arquivos na nuvem faz parte do dia a dia de todas as pessoas que usam aplicativos. Seja para trocar fotos, audios, pdfs ou até mesmo para instalar outras aplicações. Na nossa aplicação Listin, foi notada a necessidade de incluirmos uma foto de perfil para as contas de pessoas usuárias, e usaremos o Firebase Storage para implementar essa funcionalidade!
+* SDK do Flutter instalado em sua máquina [SDK Flutter](https://flutter.dev/?gad_source=1&gclid=EAIaIQobChMIpuCHuPivhAMVtURIAB2IJQNXEAAYASAAEgK3ofD_BwE&gclsrc=aw.ds). 
+* SDK do Dart instalado em sua máquina [SDK Dart](https://dart.dev/get-dart).
+* SDK do Android instalado em sua máquina, será necessário instalar a IDE Android Studio [Android Studio](https://developer.android.com/studio?gad_source=1&gclid=EAIaIQobChMI0OO33vivhAMV2lhIAB1IHwbVEAAYASAAEgLGkPD_BwE&gclsrc=aw.ds&hl=pt-br).
+* As IDEs recomendadas são o Andorid Studio e o Visual Studio Code.
+* [Tutorial de instalação e configuração](https://blog.cod3r.com.br/dart-e-flutter-instalacao-e-configuracao/)
 
-#### Desenvolvimento
+### 🔧 Instalação
 
-Nesse projeto daremos continuidade ao "Listin - Lista de Compras Colaborativa" que foi construido com Firebase Cloud Firestore, Firebase Authentication e agora adicionaremos a funcionalidade de **manipulação de arquivos** à essa aplicação.
+* ⚠️ Para este projeto você precisa ter o Node.js instalado em seu computador.
+* Acesse a paleta de Comandos do Visual Studio Code.
+* No prompt da paleta de comandos, insira <b>gitcl</b>, selecione o comando Git: <b>Clone</b> e pressione <b>Enter</b>.
+* Quando for solicitada a URL do Repositório, selecione Clonar do GitHub e pressione <b>Enter</b>.
+* Se for solicitado que você entre no GitHub, conclua o processo de entrada.
+* Insira https://github.com/GABRIEL-ASSYS/Listin-Firebase-Storage no campo URL do Repositório.
+* Selecione (ou crie) o diretório local no qual você deseja clonar o projeto.
+* Quando você receber a notificação perguntando se você deseja abrir o repositório clonado, selecione <b>Abrir</b>.
+* Para rodar o projeto é necessário abrir o terminal de comando no Visual Studio e executar ``` flutter pub get ``` para instalar as bibliotecas e dependências do Flutter.
 
-![gif-flutter-storage](https://github.com/alura-cursos/flutter_firebase_storage/raw/main/gif.gif)
+## 🛠️ Construído com  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" width="40" height="40"/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" width="40" height="40"/>
+* [Dart](https://dart.dev/guides) - Linguagem utilizada
+* [Flutter](https://docs.flutter.dev) - Framework
 
-## ✔️ Técnicas e tecnologias utilizadas
+## ✒️ Autores
 
-- `Seleção de arquivos do tipo imagem`: Usamos o `ImagePicker` para dar uma interface agradável de seleção de imagens para as pessoas usuárias;
-- `Upload de arquivo`: Com o pacote do Firebase Storage subimos a imagem selecionada;
-- `Download de arquivo`: Fazemos download de uma imagem usando seu nome e caminho;
-- `Listagem de pasta`: Listamos todos os arquivos que há em uma pasta do Storage;
-- `Remoção de arquivo`: Selecionamos e removemos um arquivo do Storage;
-- `Conexão com o Authentication`: Usamos a ferramenta de autenticação do Firebase para definir permissões de acesso aos arquivos do Storage.
+* Gabriel Assys <br>
+[<img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" />](https://www.linkedin.com/in/gabriel-assys/)
+[<img src = "https://img.shields.io/badge/instagram-%23E4405F.svg?&style=for-the-badge&logo=instagram&logoColor=white">](https://www.instagram.com/gabriel_brachak/)
+<br/>
+<img src="https://github.com/GABRIEL-ASSYS/Octocat/blob/main/octocat-1674837986440.png" width="150" height="150"/>
 
-## 📁 Acesso ao projeto
-
-Você pode [acessar o código fonte do projeto](https://github.com/alura-cursos/flutter_firebase_storage/tree/aula06) ou [baixá-lo](https://github.com/alura-cursos/flutter_firebase_storage/archive/refs/heads/aula06.zip).
-
-## 🛠️ Abrir e rodar o projeto
-
-**Para executar este projeto você precisa:**
-
-- Ter uma IDE, que pode ser o  [Android Studio](https://developer.android.com/) instalado na sua máquina;
-- Ter a [SDK do Flutter](https://docs.flutter.dev/get-started/install) na versão 3.0.0;
-- Configurar a cópia do projeto com sua conta Firebase com Cloud Firestore;
-
-## 📚 Mais informações do curso
-
-Gostou do projeto e quer conhecer mais? Você pode [acessar o curso]() que desenvolve o projeto desde o começo! Nele você aprenderá:
-
-- Entender o que é um “Referência” no Cloud Storage
-- Aprender a fazer upload de um arquivo para o Cloud Storage
-- Aprender a listar arquivos no Cloud Storage
-- Aprender a fazer download e um arquivo do Cloud Storage
-- Aprender o que são e como usar Metadados dos arquivos
-- Aprender a excluir arquivos no Cloud Storage
-- Tratar erros que podem acontecer durante a comunicação com o Cloud Storage
-
-<!-- Esse curso faz parte da [formação de Flutter da Alura](https://cursos.alura.com.br/formacao-flutter) -->
-
-*Te vejo lá!*
+---
+⌨️ com ❤️ por [Gabriel Assys](https://github.com/GABRIEL-ASSYS) 😊
